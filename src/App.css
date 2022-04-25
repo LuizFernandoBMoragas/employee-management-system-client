@@ -66,10 +66,46 @@ button:hover {
   border: 2px dashed rgb(15, 15, 121);
   margin: 10px;
   display: flex;
+  flex-direction: column;
   padding: 10px;
 }
 
 .employee h3 {
   color: rgb(12, 12, 94);
   margin: 20px;
+}
+
+.employee input {
+  width: 150px;
+  height: 45px;
+  font-size: 1.2rem;
+  outline: none;
+  color: rgb(12, 12, 94);
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.employee button {
+  width: 150px;
+  height: 45px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid rgb(15, 15, 121);
+  border-radius: 4px;
+  color: rgb(12, 12, 94);
+  font-size: 1.2rem;
+}
+
+.employee button:hover {
+  cursor: pointer;
+  background-color: lightgray;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.update-wage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
