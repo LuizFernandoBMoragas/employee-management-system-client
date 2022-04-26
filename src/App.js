@@ -14,7 +14,7 @@ function App() {
   const [employeeList, setEmployeeList] = useState([]);
 
   const addEmployee = () => {
-    Axios.post("http://localhost:8080/create", {
+    Axios.post("https://employee-mngm-system.herokuapp.com/create", {
       name: name,
       age: age,
       country: country,
@@ -26,34 +26,39 @@ function App() {
   };
 
   const getEmployees = () => {
-    Axios.get("http://localhost:8080/employees").then((response) => {
-      setEmployeeList(response.data);
-    });
-  };
-
-  const updateEmployeeWage = (id) => {
-    Axios.put("http://localhost:8080/update", { wage: newWage, id: id }).then(
+    Axios.get("https://employee-mngm-system.herokuapp.com/employees").then(
       (response) => {
-        setEmployeeList(
-          employeeList.map((val) => {
-            return val.id == id
-              ? {
-                  id: val.id,
-                  name: val.name,
-                  country: val.country,
-                  age: val.age,
-                  position: val.position,
-                  wage: newWage,
-                }
-              : val;
-          })
-        );
+        setEmployeeList(response.data);
       }
     );
   };
 
+  const updateEmployeeWage = (id) => {
+    Axios.put("https://employee-mngm-system.herokuapp.com/update", {
+      wage: newWage,
+      id: id,
+    }).then((response) => {
+      setEmployeeList(
+        employeeList.map((val) => {
+          return val.id == id
+            ? {
+                id: val.id,
+                name: val.name,
+                country: val.country,
+                age: val.age,
+                position: val.position,
+                wage: newWage,
+              }
+            : val;
+        })
+      );
+    });
+  };
+
   const deleteEmployee = (id) => {
-    Axios.delete(`http://localhost:8080/delete/${id}`).then((response) => {
+    Axios.delete(
+      `https://employee-mngm-system.herokuapp.com/delete/${id}`
+    ).then((response) => {
       setEmployeeList(
         employeeList.filter((val) => {
           return val.id != id;
